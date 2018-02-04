@@ -44,9 +44,9 @@ defmodule Postgrex.Protocol do
     port = opts[:port] || 5432
 
     {host, port} =
-      case Keyword.fetch(opts, :socket_dir) do
+      case Keyword.fetch(opts, :socket) do
         {:ok, socket} ->
-          {{:local, "#{socket}/.s.PGSQL.#{port}"}, 0}
+          {{:local, socket}, 0}
 
         :error ->
           case Keyword.fetch(opts, :hostname) do
